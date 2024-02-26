@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Output Page</title>
+</head>
+<style>
+ table{
+    border-collapse: separate;
+    border-spacing: 0 15px;
+    text-align:center;
+ }
+ th{
+    width:150px;
+ }
+ td{
+    font-family:Lucida Handwriting;
+    font-size:20px;
+    border-collapse:separate;
+    border-spacing: 0 15px;
+    width:150px;
+    text-align: center;
+    padding: 5px;
+ }
+</style>
+<body background="\static\Brick.jpg">
+<table style="color:SpringGreen">
+<thead>
+<tr style="font-size:20px; font-family:verdana">
+ <th>Image</th>
+ <th>Severity Level</th>
+ <th>Type of Collision</th>
+</tr>
+</thead>
+<tbody>
+{% if result %}
+    {% for value in result %}
+    <tr>
+        {% if result[value][1] == "No Collisions" %}
+            <td><img style="display:block;width:200px;height:200px;" src="{{value}}"></td>
+        {% else %}
+            <td><img style="display:block;width:200px;height:200px;" src="static/Vehicle_Localization_Results/{{value}}"></td>
+        {% endif %}
+        <td><p>{{result[value][0]}}</p></td>
+        <td><p>{{result[value][1]}}</p></td>
+    </tr>
+    {% endfor %}
+{% endif %}
+</tbody>
+</table>
+</body>
+</html>
